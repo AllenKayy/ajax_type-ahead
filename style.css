@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #642B73;
+    background: -webkit-linear-gradient(to left, #C6426E, #642B73);
+    background: linear-gradient(to left, #C6426E, #642B73);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; */
+}
+
+.heading {
+    font-family: 'Playfair Display', serif;
+    margin-block: 30px;
+    letter-spacing: 1px;
+    font-size: 24px;
+}
+
+.search_container {
+    margin: 0 20px;
+    /* max-width: 500px; */
+    /* height: 70vh; */
+    padding: 20px 12px;
+    background: rgba( 255, 255, 255, .3 );
+    box-shadow: 
+        rgba(0, 0, 0, 0.1) 0 2px 2px,
+        rgba(0, 0, 0, 0.1) 0 4px 4px,
+        rgba(0, 0, 0, 0.1) 0 8px 8px,
+        rgba(0, 0, 0, 0.1) 0 16px 16px,
+        rgba(0, 0, 0, 0.1) 0 32px 32px,
+        rgba(0, 0, 0, 0.1) 0 64px 64px
+    ;
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    border-radius: 12px;
+    /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+}
+
+input {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 45px;
+    border-radius: 22px;
+    padding-block: 12px;
+    padding-inline: 12px 40px;
+    font-size: 14px;
+    font-weight: 400;
+    /* transition: border ease-in-out 200ms; */
+}
+
+input:focus {
+    border: 1px solid #000;
+    /* outline: 2px solid #4a4ac79d; */
+}
+
+.search_icon {
+    position: absolute;
+    right: 12px;
+    top: 20px;
+    width: 35px;
+    height: 45px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search_icon:hover {
+    background-color: #000000d3;
+}
+
+.search_result {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 4px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: left;
+    /* overflow-y: scroll; */
+}
+
+ul>li {
+    padding: 8px;
+}
+
+.official_name {
+    color: grey;
+    font-size: 12px;
+    position: absolute;
+    right: 24px;
+}
