@@ -8,11 +8,17 @@ const countries = [];
 const fetchCountry = async () => {
     try {
         const response = await fetch(apiURL);
+
+        if (!response.ok) {
+            throw new Error('Netwrok response not ok');
+        }
+
         const data = await response.json();
         countries.push(...data)
-        // countries = data;
-    } catch (error) {
-        console.error(error);
+    } catch (err) {
+        console.error("Failed to fetch", err.message);
+        suggestionsEl.innerHTML = "<li>Error fetching data. Kindly try again later.</li>";
+        suggestionsEl.style.color = "#ff0000";
     }
 };
 
