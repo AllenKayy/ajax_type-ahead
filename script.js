@@ -23,7 +23,7 @@ const filterInput = (userInput) => {
         const countryRegion = country.region.toLowerCase().includes(userInput);
         const officialName = country.cca3.toLowerCase().includes(userInput);
 
-        return countryName || countryRegion || officialName;
+        return countryName || countryRegion ||  officialName;
     });
 };
 
@@ -85,7 +85,9 @@ const inputChange = () => {
 
 const clickSuggestion = (e) => {
     if (e.target.tagName === "LI") {
-        searchEl.value = e.target.innerText;
+        const selectedSuggestion = e.target.innerText;
+        // Add a space between the spans
+        searchEl.value = selectedSuggestion.replace(/,/, ', ');
         clearInputAndSuggestions();
         searchEl.focus();
     }
