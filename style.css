@@ -99,6 +99,7 @@ ul>li {
 
 .official_name {
     color: grey;
+    font-size: 12px;
     text-align: right !important;
     margin-left: 6px;
 }
