@@ -17,11 +17,6 @@ body {
     background: linear-gradient(to left, #C6426E, #642B73);
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; */
 }
 
 .heading {
@@ -33,7 +28,6 @@ body {
 
 .search_container {
     margin: 0 25px;
-    /* max-width: 500px; */
     padding: 20px;
     background: rgba( 255, 255, 255, .3 );
     box-shadow: 
@@ -56,10 +50,9 @@ input {
     height: 45px;
     border-radius: 22px;
     padding: 12px;
-    /* padding-inline: 12px 40px; */
     font-size: 14px;
     font-weight: 400;
-    /* transition: border ease-in-out 200ms; */
+    transition: all ease-in-out 200ms;
 }
 
 input:focus {
@@ -94,9 +87,7 @@ input:focus {
     padding: 12px;
     border-radius: 6px;
     font-size: 14px;
-    /* text-align: left; */
     transition: display ease-out .3s;
-    /* overflow-y: scroll; */
 }
 
 ul>li {

@@ -84,6 +84,10 @@ const clickSuggestion = (e) => {
     if(e.target.tagName === "LI") {
         searchEl.value = e.target.innerText;
         suggestionsEl.style.display = "none";
+
+        // suggestionsEl.querySelectorAll('li').forEach((item) => {
+        //     item.classList.remove('active');
+        // });
     }
 }
 
@@ -99,11 +103,9 @@ const keyNavigation = (e) => {
                 activeItem.classList.remove('active');
                 nextItem.classList.add('active');
             }
-        } else {
-            if (suggestionItems.length > 0) {
+        } else if (suggestionItems.length > 0) {
             suggestionItems[0].classList.add('active')
-            };
-        }
+        };
     } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         if (activeItem) {
@@ -112,20 +114,20 @@ const keyNavigation = (e) => {
                 activeItem.classList.remove('active');
                 prevItem.classList.add('active');
             }
-        } else {
-            if (suggestionItems.length > 0) {
-                suggestionItems[suggestionItems.length - 1].classList.add('active');
-            }
-        }    
+        }   
     } else if (e.key === 'Enter' && activeItem) {
         searchEl.value = activeItem.innerText;
         suggestionsEl.style.display = "none";
+
+        // suggestionItems.forEach((item) => {
+        //     item.classList.remove('active');
+        // });
     }
 }
 
 searchEl.addEventListener('input', inputChange);
 searchEl.addEventListener('keydown', keyNavigation);
-// searchEl.addEventListener('change', handleKeyNavigation);
+// searchEl.addEventListener('change', keyNavigation);
 suggestionsEl.addEventListener('click', clickSuggestion);
 
 fetchCountry();
