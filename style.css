@@ -56,9 +56,8 @@ input {
 }
 
 input:focus {
-    /* border: 1px solid #6d6c6c; */
-    outline: 2px solid #b82a2a;
-    -moz-outline-radius: 22px;
+    border: 2px solid #b82a2a;
+    /* outline: 2px solid #b82a2a; */
 }
 
 .search_icon {
