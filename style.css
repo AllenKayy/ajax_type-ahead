@@ -95,7 +95,6 @@ ul>li {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    cursor: pointer;
 }
 
 .official_name {
@@ -105,6 +104,7 @@ ul>li {
 }
 
 .active,
-li:hover {
+.item_hover:hover {
     background-color: #e7e2e2;
+    cursor: pointer;
 }
