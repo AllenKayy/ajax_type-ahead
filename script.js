@@ -18,6 +18,7 @@ const fetchCountry = async () => {
 
 const filterInput = (userInput) => {
     userInput = userInput.toLowerCase();
+    
     return countries.filter((country) => {
         const countryName = country.name.common.toLowerCase().includes(userInput);
         const countryRegion = country.region.toLowerCase().includes(userInput);
@@ -44,10 +45,10 @@ const displaySuggestions = (searchInput) => {
     }
 
     const filteredList = suggestionArray
-        .map((country) =>
+        .map(country =>
             `
-            <li>
-                <span class ="country_color">
+            <li class="item_hover">
+                <span >
                 ${country.name.common}, ${country.cca3}
                 </span>
                 <span class="official_name">
@@ -86,10 +87,8 @@ const inputChange = () => {
 const clickSuggestion = (e) => {
     if (e.target.tagName === "LI") {
         const selectedSuggestion = e.target.innerText;
-        // Add a space between the spans
-        searchEl.value = selectedSuggestion.replace(/,/, ', ');
-        clearInputAndSuggestions();
-        searchEl.focus();
+        const country = selectedSuggestion.split(',')[0].trim();
+        searchEl.value = country;
     }
 };
 
@@ -99,6 +98,7 @@ const keyNavigation = (e) => {
 
     if (e.key === 'ArrowDown') {
         e.preventDefault();
+
         if (activeItem) {
             const nextItem = activeItem.nextElementSibling;
             if (nextItem) {
@@ -110,6 +110,7 @@ const keyNavigation = (e) => {
         }
     } else if (e.key === 'ArrowUp') {
         e.preventDefault();
+
         if (activeItem) {
             const prevItem = activeItem.previousElementSibling;
             if (prevItem) {
@@ -118,9 +119,9 @@ const keyNavigation = (e) => {
             }
         }
     } else if (e.key === 'Enter' && activeItem) {
-        searchEl.value = activeItem.innerText;
-        clearInputAndSuggestions();
-        searchEl.focus();
+        const selectedSuggestion = activeItem.innerText;
+        const country = selectedSuggestion.split(',')[0].trim();
+        searchEl.value = country;
     }
 };
 
