@@ -112,6 +112,7 @@ ul>li {
     margin-left: 6px;
 }
 
-.active {
+.active,
+.active:hover {
     background-color: #e7e2e2;
 }
