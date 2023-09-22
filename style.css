@@ -65,6 +65,7 @@ input {
 input:focus {
     /* border: 1px solid #6d6c6c; */
     outline: 2px solid #b82a2a;
+    -moz-outline-radius: 22px;
 }
 
 .search_icon {
@@ -104,6 +105,7 @@ ul>li {
     justify-content: space-between;
     align-items: center;
     text-align: left;
+    cursor: pointer;
 }
 
 .official_name {
@@ -113,6 +115,6 @@ ul>li {
 }
 
 .active,
-.active:focus {
+li:hover {
     background-color: #e7e2e2;
 }
