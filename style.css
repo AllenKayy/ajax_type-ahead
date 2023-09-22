@@ -93,20 +93,23 @@ input:focus {
     padding: 12px;
     border-radius: 6px;
     font-size: 14px;
-    text-align: left;
+    /* text-align: left; */
     transition: display ease-out .3s;
     /* overflow-y: scroll; */
 }
 
 ul>li {
     padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
 }
 
 .official_name {
     color: grey;
-    font-size: 12px;
-    position: absolute;
-    right: 40px;
+    text-align: right !important;
+    margin-left: 6px;
 }
 
 .active {

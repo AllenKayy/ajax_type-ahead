@@ -49,7 +49,12 @@ const displaySuggestions = (searchInput) => {
     const filteredList = suggestionArray.map(country =>
         `
             <li>
-                ${country.name.common}, ${country.cca3 } <span class="official_name">${country.subregion}, ${country.region}</span>
+                <span>
+                ${country.name.common}, ${country.cca3}
+                </span>
+                <span class="official_name">
+                ${country.subregion}, ${country.region}
+                </span>
             </li>
         `
     ).join('');
