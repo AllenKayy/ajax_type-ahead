@@ -10,36 +10,32 @@ const fetchCountry = async () => {
         const response = await fetch(apiURL);
         const data = await response.json();
         countries.push(...data)
-        // countries = data
-        
+        // countries = data;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 };
 
-const filterInput = (userInput, countries) => {
+const filterInput = (userInput) => {
     userInput = userInput.toLowerCase();
-    return countries.filter(country => {
+    return countries.filter((country) => {
         const countryName = country.name.common.toLowerCase().includes(userInput);
         const countryRegion = country.region.toLowerCase().includes(userInput);
         const officialName = country.cca3.toLowerCase().includes(userInput);
 
         return countryName || countryRegion || officialName;
-        
     });
-    // return filteredCountries;
 };
 
 const displaySuggestions = (searchInput) => {
     const trimmedInput = searchInput.trim();
 
-    // if (trimmedInput === '') {
-    //     suggestionsEl.innerHTML = "<li>Please enter a search query</li>";
-    //     suggestionsEl.style.color = "#ff0000";
-    //     return;
-    // }
+    if (trimmedInput === '') {
+        suggestionsEl.innerHTML = '';
+        return;
+    }
 
-    const suggestionArray = filterInput(trimmedInput, countries);
+    const suggestionArray = filterInput(trimmedInput);
 
     if (suggestionArray.length === 0) {
         suggestionsEl.innerHTML = "<li>No matching countries found</li>";
@@ -47,8 +43,9 @@ const displaySuggestions = (searchInput) => {
         return;
     }
 
-    const filteredList = suggestionArray.map(country =>
-        `
+    const filteredList = suggestionArray
+        .map((country) =>
+            `
             <li>
                 <span class ="country_color">
                 ${country.name.common}, ${country.cca3}
@@ -58,38 +55,41 @@ const displaySuggestions = (searchInput) => {
                 </span>
             </li>
         `
-    ).join('');
+        )
+        .join('');
     suggestionsEl.innerHTML = filteredList;
     suggestionsEl.style.color = "#000";
-}
+};
 
-const inputChange = (searchInput) => {
-    searchInput = searchEl.value;
+const inputChange = () => {
+    const searchInput = searchEl.value;
     displaySuggestions(searchInput);
 
-    // if (searchInput.trim() === '') {
-    //     suggestionsEl.innerHTML = "<li>Please enter a search query</li>"
-    //     suggestionsEl.style.color = "#ff0000";
-    // }
-}
-
-searchEl.addEventListener('focus', () => {
-    const searchInput = searchEl.value;
     if (searchInput.trim() === '') {
-        displaySuggestions(searchInput);
+        suggestionsEl.innerHTML = "<li>Please enter a search query</li>"
+        suggestionsEl.style.color = "#ff0000";
     }
-});
+};
+
+// searchEl.addEventListener('focus', () => {
+//     const searchInput = searchEl.value;
+//     if (searchInput.trim() === '') {
+//         displaySuggestions(searchInput);
+//     }
+// });
+
+// const clearInputAndSuggestions = () => {
+//     searchEl.value = '';
+//     suggestionsEl.innerHTML = '';
+// };
 
 const clickSuggestion = (e) => {
-    if(e.target.tagName === "LI") {
+    if (e.target.tagName === "LI") {
         searchEl.value = e.target.innerText;
-        suggestionsEl.style.display = "none";
-
-        // suggestionsEl.querySelectorAll('li').forEach((item) => {
-        //     item.classList.remove('active');
-        // });
+        clearInputAndSuggestions();
+        searchEl.focus();
     }
-}
+};
 
 const keyNavigation = (e) => {
     const suggestionItems = suggestionsEl.querySelectorAll('li');
@@ -104,8 +104,8 @@ const keyNavigation = (e) => {
                 nextItem.classList.add('active');
             }
         } else if (suggestionItems.length > 0) {
-            suggestionItems[0].classList.add('active')
-        };
+            suggestionItems[0].classList.add('active');
+        }
     } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         if (activeItem) {
@@ -114,20 +114,16 @@ const keyNavigation = (e) => {
                 activeItem.classList.remove('active');
                 prevItem.classList.add('active');
             }
-        }   
+        }
     } else if (e.key === 'Enter' && activeItem) {
         searchEl.value = activeItem.innerText;
-        suggestionsEl.style.display = "none";
-
-        // suggestionItems.forEach((item) => {
-        //     item.classList.remove('active');
-        // });
+        clearInputAndSuggestions();
+        searchEl.focus();
     }
-}
+};
 
 searchEl.addEventListener('input', inputChange);
 searchEl.addEventListener('keydown', keyNavigation);
-// searchEl.addEventListener('change', keyNavigation);
 suggestionsEl.addEventListener('click', clickSuggestion);
 
 fetchCountry();
